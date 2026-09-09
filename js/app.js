@@ -1,7 +1,5 @@
 import {initNavigation,toast} from './ui.js';
 import {createPosterEngine} from './poster/engine.js';
-import posterCandidate from '../assets/images/img_9783.webp';
-import apcLogo from '../assets/images/apc-logo.webp';
 
 initNavigation();
 
@@ -9,9 +7,9 @@ const $=s=>document.querySelector(s);
 const uploadZone=$('#uploadZone'),fileInput=$('#supporterUpload'),avatar=$('#uploadAvatar'),uploadTitle=$('#uploadTitle');
 const nameInput=$('#supporterName'),messageInput=$('#slogan'),hashtagInput=$('#hashtag'),zoomInput=$('#zoomRange'),zoomValue=$('#zoomValue');
 const downloadBtn=$('#downloadBtn'),shareBtn=$('#shareBtn'),resetBtn=$('#resetBtn'),status=$('#previewStatus'),posterState=$('#posterState');
-const engine=createPosterEngine({canvas:$('#posterCanvas'),candidateSrc:'assets/images/img_9783.webp',logoSrc:'assets/images/apc-logo.webp',onState:({hasSupporter,name})=>{status.textContent=hasSupporter?'Personalized':'Ready';posterState.textContent=hasSupporter?(name?`Prepared for ${name}`:'Personalized poster'):'Base poster ready'}});
+const engine=createPosterEngine({canvas:$('#posterCanvas'),candidateSrc:'/assets/images/img_9783.jpg',logoSrc:'/assets/images/apc-logo.jpeg',onState:({hasSupporter,name})=>{status.textContent=hasSupporter?'Personalized':'Ready';posterState.textContent=hasSupporter?(name?`Prepared for ${name}`:'Personalized poster'):'Base poster ready'}});
 
-engine.ready().catch(()=>toast('The campaign image could not be loaded.'));
+engine.ready().catch(()=>{status.textContent='Unavailable';posterState.textContent='Poster preview unavailable';toast('The poster image could not be loaded. Please refresh the page.');});
 
 function update(){engine.set({name:nameInput.value.trim(),message:messageInput.value.trim(),hashtag:hashtagInput.value.trim()})}
 [nameInput,messageInput,hashtagInput].forEach(el=>el.addEventListener('input',update));

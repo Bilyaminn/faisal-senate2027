@@ -6,9 +6,10 @@ export function createPosterEngine({canvas,candidateSrc,logoSrc,onState}){
   let supporter=null,template='classic',zoom=100,renderQueued=false;
   const state={name:'',message:'I stand with Dr. Faisal Shuaib',hashtag:'#FaisalForNasarawaWest'};
   candidate.decoding='async';logoImg.decoding='async';
-  const candidateReady=new Promise((resolve,reject)=>{candidate.onload=resolve;candidate.onerror=reject;candidate.src=candidateSrc});
-  logoImg.src=logoSrc;
+  const candidateReady=new Promise((resolve,reject)=>{candidate.onload=resolve;candidate.onerror=()=>reject(new Error('Campaign portrait failed to load'));candidate.src=candidateSrc});
   logoImg.onload=()=>queue();
+  logoImg.onerror=()=>queue();
+  logoImg.src=logoSrc;
   function set(partial){Object.assign(state,partial);queue()}
   function setSupporter(img){supporter=img;queue()}
   function setTemplate(value){if(TEMPLATES[value]){template=value;queue()}}
