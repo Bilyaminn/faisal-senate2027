@@ -1,5 +1,7 @@
 import {initNavigation,toast} from './ui.js';
 import {createPosterEngine} from './poster/engine.js';
+import posterCandidate from '../assets/images/img_9783.webp';
+import apcLogo from '../assets/images/apc-logo.webp';
 
 initNavigation();
 
