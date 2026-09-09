@@ -146,7 +146,7 @@ function classic(ctx, p) {
   ctx.fillText('Dr. Faisal Shuaib', 55, 670);
   ctx.fillStyle = '#c4d0da';
   ctx.font = '600 22px Manrope';
-  ctx.fillText('Candidate for Senate — Nasarawa West', 55, 713);
+  ctx.fillText('FOR SENATE — NASARAWA WEST · 2027', 55, 713);
 
   ctx.fillStyle = COLORS.navy2;
   ctx.fillRect(0, split, W, H - split);
@@ -221,7 +221,7 @@ function modern(ctx, p) {
   ctx.fillText('DR. FAISAL SHUAIB', 68, 588);
   ctx.fillStyle = COLORS.gold;
   ctx.font = '800 18px Manrope';
-  ctx.fillText('FOR NASARAWA WEST SENATORIAL DISTRICT', 68, 625);
+  ctx.fillText('FOR SENATE — NASARAWA WEST · 2027', 68, 625);
 
   // Lower section is deliberately split into three clear zones:
   // supporter identity, campaign statement, and footer metadata.
